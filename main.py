@@ -15,12 +15,22 @@ class SlinkedList:
       print(printval.dataval)
       printval = printval.nextval
   
-  def AtBeginning(self, newdata):
-    NewNode = Node(newdata)
+  # def AtBeginning(self, newdata):
+  #   NewNode = Node(newdata)
   
 # Update the new nodes next value to existing node
-    NewNode.nextval = self.headval
-    self.headval = NewNode
+    # NewNode.nextval = self.headval
+    # self.headval = NewNode
+
+  def AtEnd(self, newdata):
+    NewNode = Node(newdata)
+    if self.headval is None:
+      self.headval = NewNode
+      return 
+    laste = self.headval
+    while(laste.nextval):
+      laste = laste.nextval
+      laste.nextval = NewNode
 
 list1 = SlinkedList()
 list1.headval = Node("Mon")
@@ -34,7 +44,10 @@ list1.headval.nextval = e2
 e2.nextval = e3
 
 # Insert new element at the at the beginning of the list
-list1.AtBeginning("Sun")
+# list1.AtBeginning("Sun")
+
+# Insert new element at the end of the list
+list1.AtEnd("Thu")
 
 # Print all values in the list
 list1.listprint()
